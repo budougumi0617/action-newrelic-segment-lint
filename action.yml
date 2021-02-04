@@ -1,23 +1,27 @@
-name: 'TODO: Run <linter-name> with reviewdog'
-description: 'TODO: 🐶 Run <linter-name> with reviewdog on pull requests to improve code review experience.'
-author: 'TODO: <your-name>'
+
+name: 'Run nrseg inspect with reviewdog'
+description: '🐶 Run "nrseg inspect" with reviewdog on pull requests to improve code review experience.'
+author: 'budougumi0617'
 inputs:
   github_token:
-    description: 'GITHUB_TOKEN'
-    default: '${{ github.token }}'
-  workdir:
-    description: 'Working directory relative to the root directory.'
-    default: '.'
-  ### Flags for reviewdog ###
+    description: 'GITHUB_TOKEN.'
+    required: true
+    default: ${{ github.token }}
+  nrseg_flags:
+    description: 'nrseg flags. (nrseg inspect <nrseg_flags>)'
+    default: ''
+  tool_name:
+    description: 'Tool name to use for reviewdog reporter'
+    default: 'nrseg'
   level:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
   reporter:
-    description: 'Reporter of reviewdog command [github-pr-check,github-pr-review].'
-    default: 'github-pr-check'
+    description: 'Reporter of reviewdog command [github-pr-check,github-pr-review,github-check].'
+    default: 'github-pr-review'
   filter_mode:
     description: |
-      Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+      Filtering for the reviewdog command [added,diff_context,file,nofilter].
       Default is added.
     default: 'added'
   fail_on_error:
@@ -28,16 +32,29 @@ inputs:
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
-  ### Flags for <linter-name> ###
-  locale:
-    description: '-locale flag of misspell. (US/UK)'
-    default: ''
+  workdir:
+    description: 'Working directory relative to the root directory.'
+    default: '.'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-
-# Ref: https://haya14busa.github.io/github-action-brandings/
-# TODO: update branding if you want.
+  using: 'composite'
+  steps:
+    - run: $GITHUB_ACTION_PATH/script.sh
+      shell: bash
+      env:
+        # We may want to allow specifing reviewdog version as
+        # action's input, but let's start with hard coded latest stable version.
+        REVIEWDOG_VERSION: v0.11.0
+        # INPUT_<VARIABLE_NAME> is not available in Composite run steps
+        # https://github.community/t/input-variable-name-is-not-available-in-composite-run-steps/127611
+        INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+        INPUT_NRSEG_FLAGS: ${{ inputs.nrseg_flags }}
+        INPUT_TOOL_NAME: ${{ inputs.tool_name }}
+        INPUT_LEVEL: ${{ inputs.level }}
+        INPUT_REPORTER: ${{ inputs.reporter }}
+        INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
+        INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
+        INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
+        INPUT_WORKDIR: ${{ inputs.workdir }}
 branding:
-  icon: 'check'
+  icon: 'check-circle'
   color: 'blue'
