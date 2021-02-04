@@ -1,25 +1,24 @@
 # action-template
 
-<!-- TODO: replace reviewdog/action-template with your repo name -->
-[![Test](https://github.com/reviewdog/action-template/workflows/Test/badge.svg)](https://github.com/reviewdog/action-template/actions?query=workflow%3ATest)
-[![reviewdog](https://github.com/reviewdog/action-template/workflows/reviewdog/badge.svg)](https://github.com/reviewdog/action-template/actions?query=workflow%3Areviewdog)
-[![depup](https://github.com/reviewdog/action-template/workflows/depup/badge.svg)](https://github.com/reviewdog/action-template/actions?query=workflow%3Adepup)
-[![release](https://github.com/reviewdog/action-template/workflows/release/badge.svg)](https://github.com/reviewdog/action-template/actions?query=workflow%3Arelease)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/reviewdog/action-template?logo=github&sort=semver)](https://github.com/reviewdog/action-template/releases)
-[![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
+<
+[![reviewdog](https://github.com/budougumi0617/action-newrelic-segment-lint
+/workflows/reviewdog/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint
+/actions?query=workflow%3Areviewdog)
+[![depup](https://github.com/budougumi0617/action-newrelic-segment-lint
+/workflows/depup/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint
+/actions?query=workflow%3Adepup)
+[![release](https://github.com/budougumi0617/action-newrelic-segment-lint
+/workflows/release/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint
+/actions?query=workflow%3Arelease)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/budougumi0617/action-newrelic-segment-lint
+?logo=github&sort=semver)](https://github.com/budougumi0617/action-newrelic-segment-lint
+/releases)
 
-![github-pr-review demo](https://user-images.githubusercontent.com/3797062/73162963-4b8e2b00-4132-11ea-9a3f-f9c6f624c79f.png)
-![github-pr-check demo](https://user-images.githubusercontent.com/3797062/73163032-70829e00-4132-11ea-8481-f213a37db354.png)
+[comment]: <> ([![action-bumpr supported]&#40;https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr&#41;]&#40;https://github.com/haya14busa/action-bumpr&#41;)
 
-This is a template repository for [reviewdog](https://github.com/reviewdog/reviewdog) action with release automation.
-Click `Use this template` button to create your reviewdog action :dog:!
+[comment]: <> (![github-pr-review demo]&#40;https://user-images.githubusercontent.com/3797062/73162963-4b8e2b00-4132-11ea-9a3f-f9c6f624c79f.png&#41;)
 
-If you want to create your own reviewdog action from scratch without using this
-template, please check and copy release automation flow.
-It's important to manage release workflow and sync reviewdog version for all
-reviewdog actions.
-
-This repo contains a sample action to run [misspell](https://github.com/client9/misspell).
+[comment]: <> (![github-pr-check demo]&#40;https://user-images.githubusercontent.com/3797062/73163032-70829e00-4132-11ea-8481-f213a37db354.png&#41;)
 
 ## Input
 
@@ -29,10 +28,12 @@ inputs:
   github_token:
     description: 'GITHUB_TOKEN'
     default: '${{ github.token }}'
-  workdir:
-    description: 'Working directory relative to the root directory.'
-    default: '.'
-  ### Flags for reviewdog ###
+  nrseg_flags:
+    description: 'nrseg flags. (nrseg inspect <nrseg_flags>)'
+    default: ''
+  tool_name:
+    description: 'Tool name to use for reviewdog reporter'
+    default: 'nrseg'
   level:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
@@ -52,28 +53,24 @@ inputs:
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
-  ### Flags for <linter-name> ###
-  locale:
-    description: '-locale flag of misspell. (US/UK)'
-    default: ''
 ```
 
 ## Usage
-<!-- TODO: update. replace `template` with the linter name -->
 
 ```yaml
-name: reviewdog
+name: nrseg
 on: [pull_request]
 jobs:
-  # TODO: change `linter_name`.
   linter_name:
-    name: runner / <linter-name>
+    name: runner / nrseg inspect
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: reviewdog/action-template@v1
+      - uses: budougumi0617/action-newrelic-segment-lint
+@v1
         with:
           github_token: ${{ secrets.github_token }}
+          nrseg_flags: "-i testutil ./src"
           # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
           reporter: github-pr-review
           # Change reporter level if you need.
@@ -111,4 +108,3 @@ Supported linters:
 This repository uses [reviewdog/action-depup](https://github.com/reviewdog/action-depup) to update
 reviewdog version.
 
-[![reviewdog depup demo](https://user-images.githubusercontent.com/3797062/73154254-170e7500-411a-11ea-8211-912e9de7c936.png)](https://github.com/reviewdog/action-template/pull/6)
