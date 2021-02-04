@@ -10,13 +10,19 @@ curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.s
 echo '::endgroup::'
 
 echo '::group:: Installing nrseg ... https://github.com/budougumi0617/nrseg'
-curl -L "$(curl -Ls https://api.github.com/repos/budougumi0617/nrseg/releases/latest | grep -o -E "https://.+?_Linux_x86_64.tar.gz")" -o nrseg.tar.gz && tar -zxvf nrseg.tar.gz -C "${TEMP_PATH}" && rm nrseg.tar.gz
+curl -L "$(curl -Ls https://api.github.com/repos/budougumi0617/nrseg/releases/latest | grep -o -E "https://.+?_Linux_x86_64.tar.gz")" -o nrseg.tar.gz
+tar -zxvf nrseg.tar.gz -C "${TEMP_PATH}"
+ls "${TEMP_PATH}"
+rm nrseg.tar.gz
 echo '::endgroup::'
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 echo '::group:: Running nrseg with reviewdog 🐶 ...'
+which reviewdog
+which nrseg
 # shellcheck disable=SC2086
+nrseg inspect ${INPUT_NRSEG_FLAGS}
 nrseg inspect ${INPUT_NRSEG_FLAGS} \
   | reviewdog -f=golint \
       -name="${INPUT_TOOL_NAME}" \
