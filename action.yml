@@ -18,7 +18,7 @@ inputs:
     default: 'error'
   reporter:
     description: 'Reporter of reviewdog command [github-pr-check,github-pr-review,github-check].'
-    default: 'github-pr-review'
+    default: 'github-pr-check'
   filter_mode:
     description: |
       Filtering for the reviewdog command [added,diff_context,file,nofilter].
