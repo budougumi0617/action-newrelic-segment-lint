@@ -3,7 +3,7 @@
 [![reviewdog](https://github.com/budougumi0617/action-newrelic-segment-lint/workflows/reviewdog/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint/actions?query=workflow%3Areviewdog)
 [![depup](https://github.com/budougumi0617/action-newrelic-segment-lint/workflows/depup/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint/actions?query=workflow%3Adepup)
 [![release](https://github.com/budougumi0617/action-newrelic-segment-lint/workflows/release/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint/actions?query=workflow%3Arelease)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/budougumi0617/nrseg/release/budougumi0617/action-newrelic-segment-lint?logo=github&sort=semver)](https://github.com/budougumi0617/action-newrelic-segment-lint/releases)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/budougumi0617/action-newrelic-segment-lint?logo=github&sort=semver)](https://github.com/budougumi0617/action-newrelic-segment-lint/releases)
 
 [comment]: <> ([![action-bumpr supported]&#40;https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr&#41;]&#40;https://github.com/haya14busa/action-bumpr&#41;)
 
