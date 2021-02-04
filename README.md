@@ -1,18 +1,9 @@
 # action-template
 
-<
-[![reviewdog](https://github.com/budougumi0617/action-newrelic-segment-lint
-/workflows/reviewdog/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint
-/actions?query=workflow%3Areviewdog)
-[![depup](https://github.com/budougumi0617/action-newrelic-segment-lint
-/workflows/depup/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint
-/actions?query=workflow%3Adepup)
-[![release](https://github.com/budougumi0617/action-newrelic-segment-lint
-/workflows/release/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint
-/actions?query=workflow%3Arelease)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/budougumi0617/action-newrelic-segment-lint
-?logo=github&sort=semver)](https://github.com/budougumi0617/action-newrelic-segment-lint
-/releases)
+[![reviewdog](https://github.com/budougumi0617/action-newrelic-segment-lint/workflows/reviewdog/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint/actions?query=workflow%3Areviewdog)
+[![depup](https://github.com/budougumi0617/action-newrelic-segment-lint/workflows/depup/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint/actions?query=workflow%3Adepup)
+[![release](https://github.com/budougumi0617/action-newrelic-segment-lint/workflows/release/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint/actions?query=workflow%3Arelease)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/budougumi0617/nrseg/release/budougumi0617/action-newrelic-segment-lint?logo=github&sort=semver)](https://github.com/budougumi0617/action-newrelic-segment-lint/releases)
 
 [comment]: <> ([![action-bumpr supported]&#40;https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr&#41;]&#40;https://github.com/haya14busa/action-bumpr&#41;)
 
@@ -66,11 +57,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: budougumi0617/action-newrelic-segment-lint
-@v1
+      - uses: budougumi0617/action-newrelic-segment-lint@v1
         with:
           github_token: ${{ secrets.github_token }}
-          nrseg_flags: "-i testutil ./src"
+          nrseg_flags: "-i testing ./src"
           # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
           reporter: github-pr-review
           # Change reporter level if you need.
