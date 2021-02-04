@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: budougumi0617/action-newrelic-segment-lint@v1
+      - uses: budougumi0617/action-newrelic-segment-lint
         with:
           github_token: ${{ secrets.github_token }}
           nrseg_flags: "-i testing ./src"
