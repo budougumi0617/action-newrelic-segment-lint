@@ -10,7 +10,7 @@ curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.s
 echo '::endgroup::'
 
 echo '::group:: Installing nrseg ... https://github.com/budougumi0617/nrseg'
-curl -L "$(curl -Ls https://api.github.com/repos/budougumi0617/nrseg/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o nrseg.zip && unzip nrseg.zip -d "${TEMP_PATH}" && rm nrseg.zip
+curl -L "$(curl -Ls https://api.github.com/repos/budougumi0617/nrseg/releases/latest | grep -o -E "https://.+?_Linux_x86_64.tar.gz")" -o nrseg.tar.gz && tar -zxvf nrseg.tar.gz -C ./ && rm nrseg.tar.gz
 echo '::endgroup::'
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
