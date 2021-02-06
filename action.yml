@@ -1,6 +1,6 @@
 
-name: 'Run nrseg inspect with reviewdog'
-description: '🐶 Run "nrseg inspect" with reviewdog on pull requests to improve code review experience.'
+name: 'action-newrelic-segment-lint'
+description: '🐶 Verify new function generates a segment for NewRelic with reviewdog on pull requests to improve code review experience.'
 author: 'budougumi0617'
 inputs:
   github_token:
