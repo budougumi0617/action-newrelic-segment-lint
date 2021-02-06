@@ -1,4 +1,4 @@
-# action-template
+# action-newrelic-segment-lint
 
 [![reviewdog](https://github.com/budougumi0617/action-newrelic-segment-lint/workflows/reviewdog/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint/actions?query=workflow%3Areviewdog)
 [![depup](https://github.com/budougumi0617/action-newrelic-segment-lint/workflows/depup/badge.svg)](https://github.com/budougumi0617/action-newrelic-segment-lint/actions?query=workflow%3Adepup)
@@ -10,6 +10,8 @@
 [comment]: <> (![github-pr-review demo]&#40;https://user-images.githubusercontent.com/3797062/73162963-4b8e2b00-4132-11ea-9a3f-f9c6f624c79f.png&#41;)
 
 [comment]: <> (![github-pr-check demo]&#40;https://user-images.githubusercontent.com/3797062/73163032-70829e00-4132-11ea-8481-f213a37db354.png&#41;)
+
+Verify new function generates a segment for NewRelic with reviewdog on pull requests to improve code review experience.
 
 ## Input
 
